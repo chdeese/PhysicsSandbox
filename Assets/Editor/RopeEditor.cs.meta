@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5af9e13c45129784bbe0c4df95009129
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _ropePrefab: {fileID: 1866679049322026267, guid: ec6dcfb976154944087c25ee981e689f, type: 3}
+  - _segmentPrefab: {fileID: 3302092831971136152, guid: 61dc8dd392768144ba797a4f690c9934, type: 3}
+  - _camera: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

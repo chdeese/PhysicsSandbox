@@ -1,0 +1,1 @@
+Make rope origin point kinematic to hover rope.

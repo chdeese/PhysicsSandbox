@@ -11,12 +11,11 @@ public class Input : MonoBehaviour
 
     private PlayerInput _input;
 
-    [SerializeField]
-    private float _acceleration;
 
     [SerializeField]
     private float _maxSpeed;
-
+    [SerializeField]
+    private float _acceleration;
     [SerializeField]
     private float _turnSpeed;
 

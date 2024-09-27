@@ -68,7 +68,7 @@ public class Input : MonoBehaviour
 
             newVelocity *= _acceleration * Time.fixedDeltaTime;
 
-            Vector3 maxVelocity = newVelocity.normalized * _maxSpeed * Time.fixedDeltaTime;
+            Vector3 maxVelocity = newVelocity.normalized * _maxSpeed;
 
             if (_rigidBody.velocity.magnitude > maxVelocity.magnitude)
                 _rigidBody.AddForce(maxVelocity, ForceMode.VelocityChange);

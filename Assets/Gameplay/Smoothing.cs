@@ -21,5 +21,4 @@ public class Smoothing : MonoBehaviour
         else
             return difference;
     }
-
 }

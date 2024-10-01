@@ -511,7 +511,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _cameraPosition: {fileID: 1789083430}
-  _smoothingSpeed: 200
+  _smoothingSpeed: 50
 --- !u!114 &1810912012
 MonoBehaviour:
   m_ObjectHideFlags: 0

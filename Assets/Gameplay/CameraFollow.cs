@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Smoothing))]
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField]
@@ -27,10 +28,24 @@ public class CameraFollow : MonoBehaviour
     private void FixedUpdate()
     {
         Transform currentTransform = gameObject.transform;
-        Transform newTransform = _cameraPosition.transform;
+        Transform targetTransform = _cameraPosition.transform;
 
         Quaternion newRotation = currentTransform.rotation;
-        newRotation.eulerAngles += _smoothing.GetSmoothing(newTransform.rotation.eulerAngles, currentTransform.rotation.eulerAngles, Time.fixedDeltaTime);
+
+        float eulerY;
+        float eulerYDistance = targetTransform.eulerAngles.y - currentTransform.eulerAngles.y;
+        float delta = (eulerYDistance/eulerYDistance * _smoothingSpeed * Time.fixedDeltaTime);
+        if (delta > eulerYDistance)
+            delta = eulerYDistance;
+
+        eulerY = newRotation.eulerAngles.y + delta;
+
+        if(eulerY > 360)
+            eulerY -= 360;
+        if (eulerY < 0)
+            eulerY += 360;
+
+        newRotation.eulerAngles = new Vector3 (newRotation.eulerAngles.x, eulerY, newRotation.eulerAngles.z);
 
         gameObject.transform.position = _cameraPosition.transform.position;
         gameObject.transform.rotation = newRotation;

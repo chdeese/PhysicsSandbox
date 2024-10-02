@@ -39,19 +39,20 @@ public class UnityChanAnimationCycle : MonoBehaviour
 
     private bool _ragdollEnabled = false;
 
-    private bool _grounded = true;
-
+    private Grounded _grounded;
 
     private void Awake()
     {
+        _grounded = GetComponentInChildren<Grounded>();
+
         //_animator.SetFloat("GravityControl", 0.5f);
         _rigidBody = GetComponent<Rigidbody>();
         _animator = GetComponent<Animator>();
 
         foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
-            rb.useGravity = false;
+            rb.isKinematic = true;
 
-        GetComponent<Rigidbody>().useGravity = true;
+        GetComponent<Rigidbody>().isKinematic = false;
     }
 
     private void FixedUpdate()
@@ -63,7 +64,7 @@ public class UnityChanAnimationCycle : MonoBehaviour
         }
             
 
-        if (_jumping || !_grounded)
+        if (_jumping || !_grounded.grounded)
             return;
 
         if (_currentSpeed >= _maxSpeed)
@@ -97,7 +98,6 @@ public class UnityChanAnimationCycle : MonoBehaviour
         if (_jumping || !_grounded)
             return;
 
-        _grounded = false;
         _jumping = true;
         _animator.SetBool("Jump", _jumping);
         _animator.SetFloat("JumpHeight", _jumpHeight);
@@ -115,7 +115,7 @@ public class UnityChanAnimationCycle : MonoBehaviour
         _ragdollEnabled = true;
 
         foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
-            rb.useGravity = true;
+            rb.isKinematic = false;
 
         _walkCollider.enabled = false;
     }
@@ -134,25 +134,13 @@ public class UnityChanAnimationCycle : MonoBehaviour
         _walkCollider.enabled = true;
 
         foreach (Rigidbody rb in GetComponentsInChildren<Rigidbody>())
-            rb.useGravity = false;
+            rb.isKinematic = true;
 
-        GetComponent<Rigidbody>().useGravity = true;
-
+        GetComponent<Rigidbody>().isKinematic = false;
 
         _currentSpeed = 0;
+
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.CompareTag("Terrain"))
-            return;
-        _grounded = true;
 
-        if (_ragdollEnabled)
-        {
-            EndRagdoll();
-
-           _rigidBody.Move(transform.position + new Vector3(0, 3, 0), other.transform.rotation);
-        }
-    }
 }

@@ -33,8 +33,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 236932600248198350}
   - {fileID: 2684488063577404519}
+  - {fileID: 236932600248198350}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8677086295532862048
@@ -99,12 +99,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _walkCollider: {fileID: 340480135145176025}
   _maxSpeed: 200
-  _acceleration: 100
+  _acceleration: 50
   _direction: -1
   _turnSpeed: 80
   _jumpHeight: 6
-  _ragdollDuration: 1
-  _ragdollWait: 0.8
+  _ragdollDuration: 3
+  _ragdollWait: 0.4
 --- !u!65 &340480135145176025
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -183,7 +183,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0

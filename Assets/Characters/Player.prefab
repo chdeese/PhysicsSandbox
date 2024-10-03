@@ -66,6 +66,7 @@ Transform:
   m_Children:
   - {fileID: 1533525865639896881}
   - {fileID: 5004619039414140231}
+  - {fileID: 8524814776722460424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3407542775447232221
@@ -114,7 +115,19 @@ MonoBehaviour:
     m_ActionId: 746cfe8d-c42f-4cc8-9eae-ec8024fc6847
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8176776909536259861}
+        m_TargetAssemblyTypeName: Raygun, Assembly-CSharp
+        m_MethodName: Shoot
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 49e05bb1-d0e1-40ed-bee7-7b89685e744e
     m_ActionName: Player/Fire
   m_NeverAutoSwitchControlSchemes: 0
@@ -187,6 +200,52 @@ CapsuleCollider:
   m_Height: 1.3816296
   m_Direction: 2
   m_Center: {x: 0, y: 0.2763191, z: 0.15694612}
+--- !u!1 &8637557187869285843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8524814776722460424}
+  - component: {fileID: 8176776909536259861}
+  m_Layer: 0
+  m_Name: Projectile Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8524814776722460424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637557187869285843}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.563, z: 1.365}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7126810256971472776}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8176776909536259861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637557187869285843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d34d776f59408f4ab1a2b24e08a0f55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _projectilePrefab: {fileID: 3851165569173403971, guid: 74af5413912494841879115eed011e62, type: 3}
+  _cooldown: 0.8
 --- !u!1001 &5604350007983359916
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -27,9 +27,7 @@ public class CameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Transform currentTransform = gameObject.transform;
         Transform targetTransform = _cameraPosition.transform;
-
 
         gameObject.transform.position = _cameraPosition.transform.position;
         gameObject.transform.rotation = targetTransform.rotation;

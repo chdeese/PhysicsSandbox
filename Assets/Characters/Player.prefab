@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 3407542775447232221}
   - component: {fileID: 4256288573278429710}
   - component: {fileID: 1661579045575825816}
-  - component: {fileID: 5144978310930925043}
+  - component: {fileID: 7199797803578124586}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -134,8 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 085f979cf3b45b9409f045630da37364, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _acceleration: 12
   _maxSpeed: 20
+  _acceleration: 12
   _turnSpeed: 2
 --- !u!54 &1661579045575825816
 Rigidbody:
@@ -164,8 +164,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &5144978310930925043
-BoxCollider:
+--- !u!136 &7199797803578124586
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -182,9 +182,11 @@ BoxCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 0.77644676, z: 1.2208037}
-  m_Center: {x: 0, y: 0.44251886, z: 0.11040193}
+  serializedVersion: 2
+  m_Radius: 0.57442945
+  m_Height: 1.3816296
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.2763191, z: 0.15694612}
 --- !u!1001 &5604350007983359916
 PrefabInstance:
   m_ObjectHideFlags: 0

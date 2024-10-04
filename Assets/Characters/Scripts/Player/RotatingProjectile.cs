@@ -9,21 +9,27 @@ public class RotatingProjectile : Projectile
 
     private float _currentRotatingSpeed;
 
-    private void Awake()
+
+
+    public override void Awake()
     {
         _currentRotatingSpeed = _rotateSpeed;
+
+        base.Awake();
     }
 
-    private void FixedUpdate()
+    public override void FixedUpdate()
     {
         if (Active == false)
             return;
 
         Vector3 deltaEuler = new Vector3(Body.rotation.x, Body.rotation.y + (_currentRotatingSpeed * Time.fixedDeltaTime), Body.rotation.z);
 
-        Body.MoveRotation(Quaternion.Euler(deltaEuler));
+        Body.MoveRotation(Body.rotation * Quaternion.Euler(deltaEuler));
 
         _currentRotatingSpeed -= Time.fixedDeltaTime;
+
+        base.FixedUpdate();
     }
 
 

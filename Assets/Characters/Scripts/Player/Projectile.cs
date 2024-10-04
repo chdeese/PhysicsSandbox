@@ -8,30 +8,30 @@ public class Projectile : MonoBehaviour
     private float _speed;
     public float Speed { get => _speed; set => _speed = value; }
 
-    private Vector3 _trajectory;
+    public Vector3 Trajectory { get; set; }
 
     public Rigidbody Body { get; set; }
 
     public bool Active { get; set; } = false;
 
-    private void Awake()
+    public virtual void Awake ()
     {
-        Body = GetComponent<Rigidbody>();
+         Body = GetComponent<Rigidbody>();
     }
 
     public void SetTrajectory(Vector3 trajectory)
     {
-        _trajectory = trajectory;
+        Trajectory = trajectory;
 
         Active = true;
     }
 
-    private void FixedUpdate()
+    public virtual void FixedUpdate()
     {
-        Body.AddForce(_trajectory, ForceMode.VelocityChange);
+        Body.AddForce(Trajectory, ForceMode.VelocityChange);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (!collision.gameObject.CompareTag("Player"))
             return;

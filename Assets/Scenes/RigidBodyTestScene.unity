@@ -391,6 +391,18 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 80
       objectReference: {fileID: 0}
+    - target: {fileID: 3407542775447232221, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407542775447232221, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[0].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3407542775447232221, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
+      propertyPath: m_ActionEvents.Array.data[2].m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4256288573278429710, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
       propertyPath: _maxSpeed
       value: 20
@@ -450,6 +462,14 @@ PrefabInstance:
     - target: {fileID: 7126810256971472776, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8176776909536259861, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 1810912010}
+    - target: {fileID: 8176776909536259861, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
+      propertyPath: _cooldown
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8176776909536259861, guid: 9fdc509fa875e7046b9d0165adce1ce5, type: 3}
       propertyPath: _projectilePrefab

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class Raygun : MonoBehaviour
 {
@@ -9,11 +10,23 @@ public class Raygun : MonoBehaviour
     private GameObject _projectilePrefab;
 
     [SerializeField]
+    private Transform _camera;
+
+    [SerializeField]
     private float _cooldown;
     private float _elapsedTime;
 
+    private PlayerInput _input;
+
+    private void Awake()
+    {
+        _input = GetComponentInParent<PlayerInput>();
+    }
+
     public void FixedUpdate()
     {
+        if (_input.actions.FindAction("Fire").IsPressed())
+            Shoot();
         _elapsedTime += Time.fixedDeltaTime;
     }
 
@@ -26,12 +39,15 @@ public class Raygun : MonoBehaviour
 
         GameObject newProjectile = Instantiate(_projectilePrefab);
 
-        newProjectile.transform.position = transform.position;
-        newProjectile.transform.rotation = transform.rotation;
+        newProjectile.transform.position = _camera.transform.position;
+        newProjectile.transform.rotation = _camera.transform.rotation;
 
         newProjectile.SetActive(true);
 
-        Projectile comp = newProjectile.GetComponent<Projectile>();
+        Projectile comp = newProjectile.GetComponentInChildren<Projectile>();
+
+        if (!comp)
+            comp = newProjectile.GetComponentInChildren<RotatingProjectile>();
 
         comp.SetTrajectory(comp.Speed * newRay.direction);
 

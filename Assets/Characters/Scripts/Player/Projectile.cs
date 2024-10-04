@@ -33,7 +33,7 @@ public class Projectile : MonoBehaviour
         Body.AddForce(Trajectory, ForceMode.VelocityChange);
 
         if (_currentTime > _despawnTime)
-            Destroy(this);
+            Despawn();
         else
             _currentTime += Time.fixedDeltaTime;
     }
@@ -45,6 +45,12 @@ public class Projectile : MonoBehaviour
 
         Active = false;
 
+
+        Invoke("Despawn", 0.25f);
+    }
+
+    public void Despawn()
+    {
         Destroy(gameObject);
     }
 }

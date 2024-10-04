@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: ba757a86bfdacbf4ebdb345ec83b0da3, type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -95,19 +95,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4256288573278429710}
-        m_TargetAssemblyTypeName: Input, Assembly-CSharp
-        m_MethodName: OnMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 20e2c749-9fb1-4dfb-a676-5bef0a05ac7f
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
@@ -115,19 +103,7 @@ MonoBehaviour:
     m_ActionId: 746cfe8d-c42f-4cc8-9eae-ec8024fc6847
     m_ActionName: Player/Look[/Mouse/delta]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8176776909536259861}
-        m_TargetAssemblyTypeName: Raygun, Assembly-CSharp
-        m_MethodName: Shoot
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 49e05bb1-d0e1-40ed-bee7-7b89685e744e
     m_ActionName: Player/Fire
   m_NeverAutoSwitchControlSchemes: 0
@@ -149,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxSpeed: 20
   _acceleration: 12
-  _turnSpeed: 2
+  _turnSpeed: 45
 --- !u!54 &1661579045575825816
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -159,7 +135,7 @@ Rigidbody:
   m_GameObject: {fileID: 7015819363797385357}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0.01
+  m_Drag: 1.5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -175,7 +151,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &7199797803578124586
 CapsuleCollider:
@@ -245,7 +221,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectilePrefab: {fileID: 3851165569173403971, guid: 74af5413912494841879115eed011e62, type: 3}
-  _cooldown: 0.8
+  _camera: {fileID: 0}
+  _cooldown: 1
 --- !u!1001 &5604350007983359916
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -15,7 +15,7 @@ public class RopeSpawner : MonoBehaviour
     public float distance { get => _distanceFromCamera; }
 
     [SerializeField]
-    private float _spaceBetween;
+    private float _spaceBetween = 1;
 
     public float space { get => _spaceBetween; }
 

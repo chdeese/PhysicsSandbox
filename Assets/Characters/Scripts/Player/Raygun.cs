@@ -51,6 +51,6 @@ public class Raygun : MonoBehaviour
 
         comp.SetTrajectory(comp.Speed * newRay.direction);
 
-        _elapsedTime -= _cooldown;
+        _elapsedTime = 0;
     }
 }

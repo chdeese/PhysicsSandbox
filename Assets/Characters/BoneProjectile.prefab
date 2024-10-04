@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 5627056608065621361}
   m_Layer: 0
   m_Name: Bone
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -309,6 +309,10 @@ PrefabInstance:
     - target: {fileID: 1079331629356690753, guid: b1a283113f00aee4da85d4b6954fe847, type: 3}
       propertyPath: m_Name
       value: BoneProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 1079331629356690753, guid: b1a283113f00aee4da85d4b6954fe847, type: 3}
+      propertyPath: m_TagString
+      value: Projectile
       objectReference: {fileID: 0}
     - target: {fileID: 3627019064096298419, guid: b1a283113f00aee4da85d4b6954fe847, type: 3}
       propertyPath: m_Constraints

@@ -11,6 +11,8 @@ public class Input : MonoBehaviour
 
     private PlayerInput _input;
 
+    private Grounded _grounded;
+
 
     [SerializeField]
     private float _maxSpeed;
@@ -18,6 +20,8 @@ public class Input : MonoBehaviour
     private float _acceleration;
     [SerializeField]
     private float _turnSpeed;
+    [SerializeField]
+    private float _jumpHeight;
 
     private float _deltaTimeOffset = 100;
 
@@ -25,6 +29,7 @@ public class Input : MonoBehaviour
     {
         _rigidBody = GetComponent<Rigidbody>();
         _input = GetComponent<PlayerInput>();
+        _grounded = GetComponent<Grounded>();
     }
 
     private void Start()
@@ -41,7 +46,16 @@ public class Input : MonoBehaviour
     private void FixedUpdate()
     {
         MovePlayer();
+        Jump();
         RefreshInput();
+    }
+
+    private void Jump()
+    {
+        if (!_input.actions.FindAction("Jump").IsPressed() || !_grounded.grounded)
+            return;
+
+        _rigidBody.AddForce(transform.up * _jumpHeight, ForceMode.Impulse);
     }
 
     private void GetInput()

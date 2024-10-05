@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     private float _speed;
     public float Speed { get => _speed; set => _speed = value; }
 
-    private float _despawnTime = 10;
+    private float _despawnTime = 3;
     private float _currentTime = 0;
     public Vector3 Trajectory { get; set; }
 

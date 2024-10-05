@@ -122,7 +122,6 @@ public class UnityChanAnimationCycle : MonoBehaviour
 
         _rigidBody.AddForce(new Vector3(0, _jumpHeight, 0), ForceMode.Impulse);
 
-        _ragdollEnabled = true;
         Invoke("BeginRagdoll", _ragdollWait);
     }
     public void StopJumping()
@@ -135,6 +134,8 @@ public class UnityChanAnimationCycle : MonoBehaviour
     public void BeginRagdoll()
     {
         StopJumping();
+
+        _ragdollEnabled = true;
 
         _animator.enabled = false;
 
@@ -175,5 +176,9 @@ public class UnityChanAnimationCycle : MonoBehaviour
         _animator.SetBool("Rest", false);
     }
 
-
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") || collision.gameObject.CompareTag("Projectile"))
+            BeginRagdoll();
+    }
 }

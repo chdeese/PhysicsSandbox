@@ -87,16 +87,11 @@ public class Input : MonoBehaviour
                 _rigidBody.AddForce(maxVelocity, ForceMode.VelocityChange);
             else
                 _rigidBody.AddForce(newVelocity, ForceMode.Acceleration);
-
-
         }
 
+        float delta = _inputDirection.x * _turnSpeed * Time.fixedDeltaTime;
 
-        newRotation = transform.rotation;
-
-        newRotation.eulerAngles += new Vector3(0, _inputDirection.x * _turnSpeed * Time.fixedDeltaTime, 0);
-
-        _rigidBody.MoveRotation(newRotation);
+        transform.Rotate(new Vector3(0, delta, 0));
     }
 
     private void RefreshInput()

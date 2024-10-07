@@ -24,6 +24,9 @@ public class Input : MonoBehaviour
 
     [SerializeField]
     private float _jumpHeight;
+
+    [Space]
+
     [SerializeField]
     private float _strafeSpeed;
     [SerializeField]
@@ -43,11 +46,15 @@ public class Input : MonoBehaviour
         _maxSpeed *= _deltaTimeOffset;
         _acceleration *= _deltaTimeOffset;
         _turnSpeed *= _deltaTimeOffset;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void FixedUpdate()
     {
         MovePlayer();
+        RotatePlayer();
     }
 
     private void LateUpdate()
@@ -82,50 +89,40 @@ public class Input : MonoBehaviour
 
     private void RotatePlayer()
     {
-        float delta = _inputDirection.x * _turnSpeed * Time.fixedDeltaTime;
+        Vector3 lookDirection = _input.actions.FindAction("Look").ReadValue<Vector2>();
+
+        float delta = lookDirection.x * _turnSpeed * Time.fixedDeltaTime;
 
         transform.Rotate(new Vector3(0, delta, 0));
-    }
-
-    private void StrafePlayer()
-    {
-        float newMagnitude = _inputDirection.x * _strafeSpeed * Time.fixedDeltaTime;
-
-        Vector3 newDirection = Vector3.Cross(Vector3.up, transform.forward).normalized;
-
-        _rigidBody.AddForce(newDirection * newMagnitude, ForceMode.VelocityChange);
     }
 
     private void MovePlayer()
     {
         GetInput();
 
-        if (!_grounded.grounded)
-        {
-            StrafePlayer();
-            //only accelerate/rotate when grounded
-            return;
-        }
-        
-        RotatePlayer();
-
-        if (_input.actions.FindAction("Jump").IsPressed())   
+        if (_input.actions.FindAction("Jump").IsPressed() && _grounded.grounded)   
             Jump();
 
-        if (_inputDirection.y == 0)
+        if (_inputDirection.magnitude == 0)
             return;
 
-        Vector3 newVelocity;
+        Vector3 delta = Vector3.zero;
 
-        if (_inputDirection.y > 0)
-            newVelocity = transform.forward;
-        else
-            newVelocity = -transform.forward;
+        if (_inputDirection.x != 0)
+            if (_inputDirection.x > 0)
+                delta += transform.right;
+            else
+                delta -= transform.right;
+        if(_inputDirection.y != 0)
+            if(_inputDirection.y > 0)
+                delta += transform.forward;
+            else
+                delta -= transform.forward;
 
-        newVelocity.Normalize();
+        delta.Normalize();
 
-        newVelocity *= _acceleration * Time.fixedDeltaTime;
+        delta *= _acceleration * Time.fixedDeltaTime;
 
-        _rigidBody.AddForce(newVelocity, ForceMode.Acceleration);
+        _rigidBody.AddForce(delta, ForceMode.Acceleration);
     }
 }

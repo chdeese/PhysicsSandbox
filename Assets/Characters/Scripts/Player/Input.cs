@@ -80,11 +80,21 @@ public class Input : MonoBehaviour
         _rigidBody.AddForce(transform.up * _jumpHeight, ForceMode.Impulse);
     }
 
-    private void GetInput()
+    private bool TryGetInput()
     {
         _inputDirection = _input.actions.FindAction("Move").ReadValue<Vector2>();
+
+        if (_inputDirection.magnitude == 0)
+        {
+            if (_rigidBody.velocity.magnitude < 0.1f)
+                _rigidBody.AddForce(-_rigidBody.velocity, ForceMode.VelocityChange);
+            return false;
+        }
+
         Mathf.Clamp(_inputDirection.x, -1, 1);
         Mathf.Clamp(_inputDirection.y, -1, 1);
+
+        return true;
     }
 
     private void RotatePlayer()
@@ -98,12 +108,10 @@ public class Input : MonoBehaviour
 
     private void MovePlayer()
     {
-        GetInput();
-
         if (_input.actions.FindAction("Jump").IsPressed() && _grounded.grounded)   
             Jump();
 
-        if (_inputDirection.magnitude == 0)
+        if (!TryGetInput())  
             return;
 
         Vector3 delta = Vector3.zero;

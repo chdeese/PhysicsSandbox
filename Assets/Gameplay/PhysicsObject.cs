@@ -7,10 +7,10 @@ using UnityEngine;
 public class PhysicsObject : MonoBehaviour
 {
     [SerializeField]
-    private Material _awake;
+    private Material _awakeMaterial;
 
     [SerializeField]
-    private Material _asleep;
+    private Material _asleepMaterial;
 
     private Rigidbody _rigidBody;
     private MeshRenderer _renderer;
@@ -19,6 +19,8 @@ public class PhysicsObject : MonoBehaviour
     private void Awake()
     {
         _rigidBody = GetComponent<Rigidbody>();
+        if(!_rigidBody)
+            _rigidBody = GetComponentInChildren<Rigidbody>();
         _renderer = GetComponent<MeshRenderer>();
     }
 
@@ -29,15 +31,15 @@ public class PhysicsObject : MonoBehaviour
 
     private void UpdateMeshRenderer()
     {
-        if(_rigidBody.IsSleeping() && !_wasSleeping && _asleep != null)
+        if(_rigidBody.IsSleeping() && !_wasSleeping && _asleepMaterial != null)
         {
             _wasSleeping = true;
-            _renderer.material = _asleep;
+            _renderer.material = _asleepMaterial;
         }
-        if(!_rigidBody.IsSleeping() && _wasSleeping && _awake != null)
+        if(!_rigidBody.IsSleeping() && _wasSleeping && _awakeMaterial != null)
         {
             _wasSleeping = false;
-            _renderer.material = _awake;
+            _renderer.material = _awakeMaterial;
         }
     }
 }

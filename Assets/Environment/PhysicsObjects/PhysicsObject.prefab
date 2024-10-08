@@ -178,5 +178,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8e7f60f3165f5844ad199d5b6ae7dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _awake: {fileID: 2100000, guid: f25e67eb920cbef4392e1ea84482319e, type: 2}
-  _asleep: {fileID: 2100000, guid: c8433d7c64a94ae499e6445576094052, type: 2}
+  _awakeMaterial: {fileID: 2100000, guid: f25e67eb920cbef4392e1ea84482319e, type: 2}
+  _asleepMaterial: {fileID: 2100000, guid: c8433d7c64a94ae499e6445576094052, type: 2}
